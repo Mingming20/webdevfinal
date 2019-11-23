@@ -22,7 +22,6 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import PropTypes from 'prop-types';
-import purple from '@material-ui/core/colors/purple';
 import DashboardRoundedIcon from '@material-ui/icons/DashboardRounded';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
@@ -33,6 +32,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
 import ComputerIcon from '@material-ui/icons/Computer';
+import RoomIcon from '@material-ui/icons/Room';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -70,38 +70,45 @@ function a11yProps(index) {
 const messages = [
   {
     id: 1,
-    primary: "",
-    secondary: "",
+    primary: "Kathryn Bernardo",
+    secondary: "I'll be waiting...",
+    person: '/static/images/avatar/1.jpg',
   },
   {
     id: 2,
-    primary: "",
-    secondary: "",
+    primary: "Liza Soberano",
+    secondary: "See you at the bus",
+    person: '/static/images/avatar/2.jpg',
   },
   {
     id: 3,
-    primary: "",
-    secondary: "",
+    primary: "Jane de Leon",
+    secondary: "My ticket,where to get it?",
+    person: '/static/images/avatar/3.jpg',
   },
   {
     id: 4,
-    primary: "",
-    secondary: "",
+    primary: "Janella Salvador",
+    secondary: "I'll be busy,but I'll be coming.",
+    person: '/static/images/avatar/4.jpg',
   },
   {
     id: 5,
-    primary: "",
-    secondary: "",
+    primary: "Minari",
+    secondary: "Kansahamnida",
+    person: '/static/images/avatar/5.jpg',
   },
   {
     id: 6,
-    primary: "",
-    secondary: "",
+    primary: "Sana",
+    secondary: "To which bus?",
+    person: '/static/images/avatar/6.jpg',
   },
   {
     id: 7,
-    primary: "",
-    secondary:"",
+    primary: "Blythe Brilliantes",
+    secondary:"Is the bus available right now?",
+    person: '/static/images/avatar/7.jpg',
   },
 ];
   const useStyles = makeStyles(theme => ({
@@ -240,7 +247,7 @@ export default function SearchAppBar() {
           <Tab label="Schedule"  icon={<ScheduleIcon />} {...a11yProps(1)} />
           <Tab label="Bookings" icon={<NoteAddIcon />}{...a11yProps(2)} />
           <Tab label="Buses" icon={<DirectionsBusIcon />} {...a11yProps(3)} />
-          <Tab label="Routes" {...a11yProps(4)} />
+          <Tab label="Routes" icon={<RoomIcon />} {...a11yProps(4)} />
           <Tab label="Bus Types" icon={<AirportShuttleIcon/>} {...a11yProps(5)} />
           <Tab label="Reports" icon={<ReportIcon/>} {...a11yProps(6)} />
           <Tab label="Settings" icon={<SettingsIcon/>} {...a11yProps(7)} />
@@ -250,8 +257,7 @@ export default function SearchAppBar() {
         </Tabs>
       </AppBar>
     </div>
-      <Box width="20%" height="300%">
-        <React.Fragment>
+        <React.Fragment width="20%">
           <CssBaseline />
           <Paper square className={classes.paper}>
             <Typography className={classes.text} variant="h5" gutterBottom>
@@ -280,9 +286,8 @@ export default function SearchAppBar() {
               <Fab color="secondary" aria-label="add" className={classes.fabButton}>
                 <AddIcon />
               </Fab>
-              <div className={classes.grow} />
+              <div width="20%" className={classes.grow} />
               <IconButton color="inherit">
-                <SearchIcon />
               </IconButton>
               <IconButton edge="end" color="inherit">
                 <MoreIcon />
@@ -290,7 +295,6 @@ export default function SearchAppBar() {
             </Toolbar>
           </AppBar>
         </React.Fragment>
-      </Box>
     </div>
   );
 }
