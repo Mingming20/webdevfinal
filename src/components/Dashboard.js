@@ -1,23 +1,9 @@
 import React from 'react';
+import Schedule from '../components/Schedule';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Paper from '@material-ui/core/Paper';
-import Fab from '@material-ui/core/Fab';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import Avatar from '@material-ui/core/Avatar';
-import AddIcon from '@material-ui/icons/Add';
-import MoreIcon from '@material-ui/icons/MoreVert';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
@@ -64,53 +50,6 @@ function a11yProps(index) {
   };
 }
 
-
-
-
-const messages = [
-  {
-    id: 1,
-    primary: "Kathryn Bernardo",
-    secondary: "I'll be waiting...",
-    person: '/static/images/avatar/1.jpg',
-  },
-  {
-    id: 2,
-    primary: "Liza Soberano",
-    secondary: "See you at the bus",
-    person: '/static/images/avatar/2.jpg',
-  },
-  {
-    id: 3,
-    primary: "Jane de Leon",
-    secondary: "My ticket,where to get it?",
-    person: '/static/images/avatar/3.jpg',
-  },
-  {
-    id: 4,
-    primary: "Janella Salvador",
-    secondary: "I'll be busy,but I'll be coming.",
-    person: '/static/images/avatar/4.jpg',
-  },
-  {
-    id: 5,
-    primary: "Minari",
-    secondary: "Kansahamnida",
-    person: '/static/images/avatar/5.jpg',
-  },
-  {
-    id: 6,
-    primary: "Sana",
-    secondary: "To which bus?",
-    person: '/static/images/avatar/6.jpg',
-  },
-  {
-    id: 7,
-    primary: "Blythe Brilliantes",
-    secondary:"Is the bus available right now?",
-    person: '/static/images/avatar/7.jpg',
-  },
-];
   const useStyles = makeStyles(theme => ({
     text: {
       padding: theme.spacing(2, 2, 0),
@@ -127,6 +66,8 @@ const messages = [
     appBar: {
       top: 'auto',
       bottom: 0,
+      width: "20%",
+      left: 0,
     },
     grow: {
       flexGrow: 1,
@@ -143,9 +84,6 @@ const messages = [
       flexGrow: 1,
       width: '100%',
       backgroundColor: theme.palette.background.paper,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
     },
     title: {
       flexGrow: 1,
@@ -207,30 +145,9 @@ export default function SearchAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             LINKOD
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
         </Toolbar>
       </AppBar>
       <div className={classes.root}>
@@ -256,45 +173,57 @@ export default function SearchAppBar() {
           <Tab label="Logout" icon={<ExitToAppIcon/>} {...a11yProps(10)} />
         </Tabs>
       </AppBar>
-    </div>
-        <React.Fragment width="20%">
-          <CssBaseline />
-          <Paper square className={classes.paper}>
-            <Typography className={classes.text} variant="h5" gutterBottom>
-              Inbox
-            </Typography>
-          <List className={classes.list}>
-            {messages.map(({ id, primary, secondary, person }) => (
-              <React.Fragment key={id}>
-                {id === 1 && <ListSubheader className={classes.subheader}>Today</ListSubheader>}
-                {id === 3 && <ListSubheader className={classes.subheader}>Yesterday</ListSubheader>}
-                <ListItem button>
-                  <ListItemAvatar>
-                    <Avatar alt="Profile Picture" src={person} />
-                  </ListItemAvatar>
-                  <ListItemText primary={primary} secondary={secondary} />
-                </ListItem>
-              </React.Fragment>
-            ))}
-          </List>
-          </Paper>
-          <AppBar position="fixed" color="primary" className={classes.appBar}>
-            <Toolbar>
-              <IconButton edge="start" color="inherit" aria-label="open drawer">
-                <MenuIcon />
-              </IconButton>
-              <Fab color="secondary" aria-label="add" className={classes.fabButton}>
-                <AddIcon />
-              </Fab>
-              <div width="20%" className={classes.grow} />
-              <IconButton color="inherit">
-              </IconButton>
-              <IconButton edge="end" color="inherit">
-                <MoreIcon />
-              </IconButton>
-            </Toolbar>
-          </AppBar>
-        </React.Fragment>
+        <TabPanel value={value} index={1}>
+          <div>
+            <Schedule/>
+          </div>
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          <div>
+            <h1>Never Give Up!!Kaya Na!</h1>
+          </div>
+        </TabPanel>
+        <TabPanel value={value} index={3}>
+          <div>
+            <h1>Kaya ra ni dzae!!</h1>
+          </div>
+        </TabPanel>
+        <TabPanel value={value} index={4}>
+          <div>
+            <h1>Unsaon mani??</h1>
+          </div>
+        </TabPanel>
+        <TabPanel value={value} index={5}>
+          <div>
+            <h1>Don't Quit!!</h1>
+          </div>
+        </TabPanel>
+        <TabPanel value={value} index={6}>
+          <div>
+            <h1>it's ok</h1>
+          </div>
+        </TabPanel>
+        <TabPanel value={value} index={7}>
+          <div>
+            <h1>ok kaaeyooww</h1>
+          </div>
+        </TabPanel>
+        <TabPanel value={value} index={8}>
+          <div>
+            <h1>react js</h1>
+          </div>
+        </TabPanel>
+        <TabPanel value={value} index={9}>
+          <div>
+            <h1>jejejeje</h1>
+          </div>
+        </TabPanel>
+        <TabPanel value={value} index={10}>
+          <div>
+            <h1>Babye</h1>
+          </div>
+        </TabPanel>
+      </div>
     </div>
   );
 }
