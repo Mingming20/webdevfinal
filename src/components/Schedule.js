@@ -25,16 +25,22 @@ const StyledTableRow = withStyles(theme => ({
   },
 }))(TableRow);
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData(busname,bustype, destination, departure, lastrip, seatnum,trip) {
+  return { busname, bustype,destination, departure, lastrip, seatnum,trip };
 }
 
 const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
+  createData('CERES LINER','Aircon', 'Bato via Barili','4:00 am', '6:00 pm', '45 Seaters','3 ways'),
+  createData('CERES LINER','Ordinary', 'Bato via Barili','4:00 am', '6:00 pm', '45 Seaters','3 ways'),
+  createData('CERES LINER', 'Ordinary','Moalboal', 'no time', 'until clear', '	39 Seaters','4 ways'),
+  createData('CERES LINER', 'Ordinary','Carcar','no time', 'until clear','39 Seaters','7 ways'),
+  createData('CERES LINER', 'Ordinary','Argao','no time', 'until clear', '39 Seaters','6 ways'),
+  createData('CERES LINER', 'Ordinary','Alcoy', 'no time', 'until clear', '39 Seaters','4 ways'),
+  createData('CERES LINER', 'Ordinary','Bato via Oslob', 'no time', 'until clear', '39 Seaters','3 ways'),
+  createData('CERES LINER', 'Aircon','Argao','no time', 'until clear', '39 Seaters','6 ways'),
+  createData('CERES LINER', 'Aircon','Bato/ Oslob/Alcoy', '1:00 am', '12:00 Mid', '	45 Seaters','3 ways'),
+  createData('CERES LINER','Aircon','Dumaguete', '6:00 am', '6:00 pm', '45 Seaters','Round Trip'),
+  createData('CERES LINER','Aircon','Bacolod', '6:00 am', '1:00 pm', '45 Seaters'),
 ];
 
 const useStyles = makeStyles(theme => ({
@@ -53,27 +59,33 @@ export default function CustomizedTables() {
 
   return (
     <Paper className={classes.root}>
+    <div>
+      <h1><center>CERES LINER SCHEDULES</center></h1>
+    </div>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Bus Name</StyledTableCell>
+            <StyledTableCell align="right">Bus Type</StyledTableCell>
             <StyledTableCell align="right">Destination</StyledTableCell>
             <StyledTableCell align="right">Departure</StyledTableCell>
             <StyledTableCell align="right">Last Trip</StyledTableCell>
             <StyledTableCell align="right">Sitting Capacity</StyledTableCell>
-            <StyledTableCell align="right">Number of Days Per Trip</StyledTableCell>
+            <StyledTableCell align="right">Number of Trip/Day</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map(row => (
-            <StyledTableRow key={row.name}>
+            <StyledTableRow key={row.busname}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+                {row.busname}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="right">{row.protein}</StyledTableCell>
+              <StyledTableCell align="right">{row.bustype}</StyledTableCell>
+              <StyledTableCell align="right">{row.destination}</StyledTableCell>
+              <StyledTableCell align="right">{row.departure}</StyledTableCell>
+              <StyledTableCell align="right">{row.lastrip}</StyledTableCell>
+              <StyledTableCell align="right">{row.seatnum}</StyledTableCell>
+              <StyledTableCell align="right">{row.trip}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
