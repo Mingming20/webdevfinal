@@ -1,5 +1,6 @@
 import React from 'react';
 import Schedule from '../components/Schedule';
+import Main from '../components/Main';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -173,6 +174,11 @@ export default function SearchAppBar() {
           <Tab label="Logout" icon={<ExitToAppIcon/>} {...a11yProps(10)} />
         </Tabs>
       </AppBar>
+      <TabPanel value={value} index={0}>
+          <div>
+            <Main/>
+          </div>
+        </TabPanel>
         <TabPanel value={value} index={1}>
           <div>
             <Schedule/>
