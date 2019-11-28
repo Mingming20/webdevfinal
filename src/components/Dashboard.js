@@ -1,10 +1,11 @@
 import React from 'react';
 import Schedule from '../components/Schedule';
+import Buses from '../components/Buses';
 import Main from '../components/Main';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
@@ -12,15 +13,7 @@ import PropTypes from 'prop-types';
 import DashboardRoundedIcon from '@material-ui/icons/DashboardRounded';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import SettingsIcon from '@material-ui/icons/Settings';
-import ReportIcon from '@material-ui/icons/Report';
-import PeopleIcon from '@material-ui/icons/People';
-import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
-import ComputerIcon from '@material-ui/icons/Computer';
-import RoomIcon from '@material-ui/icons/Room';
-
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -73,14 +66,6 @@ function a11yProps(index) {
     grow: {
       flexGrow: 1,
     },
-    fabButton: {
-      position: 'absolute',
-      zIndex: 1,
-      top: -30,
-      left: 0,
-      right: 0,
-      margin: '0 auto',
-    },
     root: {
       flexGrow: 1,
       width: '100%',
@@ -91,43 +76,6 @@ function a11yProps(index) {
       display: 'none',
       [theme.breakpoints.up('sm')]: {
         display: 'block',
-      },
-    },
-    search: {
-      position: 'relative',
-      borderRadius: theme.shape.borderRadius,
-      backgroundColor: fade(theme.palette.common.white, 0.15),
-      '&:hover': {
-        backgroundColor: fade(theme.palette.common.white, 0.25),
-      },
-      marginLeft: 0,
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(1),
-        width: 'auto',
-      },
-    },
-    searchIcon: {
-      width: theme.spacing(7),
-      height: '100%',
-      position: 'absolute',
-      pointerEvents: 'none',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    inputRoot: {
-      color: 'inherit',
-    },
-    inputInput: {
-      padding: theme.spacing(1, 1, 1, 7),
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        width: 120,
-        '&:focus': {
-          width: 200,
-        },
       },
     },
     
@@ -161,17 +109,10 @@ export default function SearchAppBar() {
           variant="scrollable"
           scrollButtons="auto"
           aria-label="scrollable auto tabs example">
-          <Tab label="Dashboard" icon={<DashboardRoundedIcon />} {...a11yProps(0)} />
+          <Tab label="Dashboard" style={{ marginLeft: '30%' }} icon={<DashboardRoundedIcon />} {...a11yProps(0)} />
           <Tab label="Schedule"  icon={<ScheduleIcon />} {...a11yProps(1)} />
           <Tab label="Bookings" icon={<NoteAddIcon />}{...a11yProps(2)} />
           <Tab label="Buses" icon={<DirectionsBusIcon />} {...a11yProps(3)} />
-          <Tab label="Routes" icon={<RoomIcon />} {...a11yProps(4)} />
-          <Tab label="Bus Types" icon={<AirportShuttleIcon/>} {...a11yProps(5)} />
-          <Tab label="Reports" icon={<ReportIcon/>} {...a11yProps(6)} />
-          <Tab label="Settings" icon={<SettingsIcon/>} {...a11yProps(7)} />
-          <Tab label="Users" icon={<PeopleIcon/>} {...a11yProps(8)} />
-          <Tab label="Install/Preview" icon={<ComputerIcon/>} {...a11yProps(9)} />
-          <Tab label="Logout" icon={<ExitToAppIcon/>} {...a11yProps(10)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -191,42 +132,7 @@ export default function SearchAppBar() {
         </TabPanel>
         <TabPanel value={value} index={3}>
           <div>
-            <h1>Kaya ra ni dzae!!</h1>
-          </div>
-        </TabPanel>
-        <TabPanel value={value} index={4}>
-          <div>
-            <h1>Unsaon mani??</h1>
-          </div>
-        </TabPanel>
-        <TabPanel value={value} index={5}>
-          <div>
-            <h1>Don't Quit!!</h1>
-          </div>
-        </TabPanel>
-        <TabPanel value={value} index={6}>
-          <div>
-            <h1>it's ok</h1>
-          </div>
-        </TabPanel>
-        <TabPanel value={value} index={7}>
-          <div>
-            <h1>ok kaaeyooww</h1>
-          </div>
-        </TabPanel>
-        <TabPanel value={value} index={8}>
-          <div>
-            <h1>react js</h1>
-          </div>
-        </TabPanel>
-        <TabPanel value={value} index={9}>
-          <div>
-            <h1>jejejeje</h1>
-          </div>
-        </TabPanel>
-        <TabPanel value={value} index={10}>
-          <div>
-            <h1>Babye</h1>
+            <Buses/>
           </div>
         </TabPanel>
       </div>

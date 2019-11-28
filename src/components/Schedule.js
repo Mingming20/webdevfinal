@@ -40,7 +40,6 @@ const rows = [
   createData('CERES LINER', 'Aircon','Argao','no time', 'until clear', '39 Seaters','6 ways'),
   createData('CERES LINER', 'Aircon','Bato/ Oslob/Alcoy', '1:00 am', '12:00 Mid', '	45 Seaters','3 ways'),
   createData('CERES LINER','Aircon','Dumaguete', '6:00 am', '6:00 pm', '45 Seaters','Round Trip'),
-  createData('CERES LINER','Aircon','Bacolod', '6:00 am', '1:00 pm', '45 Seaters'),
 ];
 
 const useStyles = makeStyles(theme => ({
