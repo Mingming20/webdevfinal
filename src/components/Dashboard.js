@@ -2,6 +2,7 @@ import React from 'react';
 import Schedule from '../components/Schedule';
 import Buses from '../components/Buses';
 import Main from '../components/Main';
+import Bookings from '../components/Bookings';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -127,7 +128,7 @@ export default function SearchAppBar() {
         </TabPanel>
         <TabPanel value={value} index={2}>
           <div>
-            <h1>Never Give Up!!Kaya Na!</h1>
+            <Bookings/>
           </div>
         </TabPanel>
         <TabPanel value={value} index={3}>
