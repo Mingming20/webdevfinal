@@ -79,7 +79,6 @@ function a11yProps(index) {
         display: 'block',
       },
     },
-    
   }));
   
 
@@ -93,16 +92,18 @@ export default function SearchAppBar() {
   };
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar style={{ backgroundColor: '#ffc107' }} position="static">
         <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
-            LINKOD
+          <Typography  className={classes.title} variant="h6" noWrap>
+            <h2>LINKOD</h2>
+            
           </Typography>
         </Toolbar>
       </AppBar>
       <div className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs
+          style={{ backgroundColor: '#ffff00' }}
           value={value}
           onChange={handleChange}
           indicatorColor="primary"
