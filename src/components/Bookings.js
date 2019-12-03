@@ -77,7 +77,7 @@ export default class Buses extends Component {
                             <Grid container justify='space-around' style={{ height: '10%', marginTop: '1%' }}>
                                 <Grid style={{ width: '100%' }}>
                                     <Card style={{ maxHeight: '300px' }}>
-                                        <CardContent style={{ backgroundColor: '#00b0ff' }}>
+                                        <CardContent style={{ backgroundColor: '#ffc107' }}>
                                             <p style={{ textAlign: 'justify' }}><InfoIcon /><b>Manage Bookings<br ></br></b>
                                             </p>
                                         </CardContent>
