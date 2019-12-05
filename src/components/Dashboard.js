@@ -92,7 +92,7 @@ export default function SearchAppBar() {
   };
   return (
     <div className={classes.root}>
-      <AppBar style={{ backgroundColor: '#ffc107' }} position="static">
+      <AppBar style={{ backgroundColor: '#e65100' }} position="static">
         <Toolbar>
           <Typography  className={classes.title} variant="h6" noWrap>
             <h2>LINKOD</h2>
@@ -103,7 +103,7 @@ export default function SearchAppBar() {
       <div className={classes.root}>
       <AppBar position="static" color="default">
         <Tabs
-          style={{ backgroundColor: '#ffff00' }}
+          style={{ backgroundColor: '#1e88e5' }}
           value={value}
           onChange={handleChange}
           indicatorColor="primary"
