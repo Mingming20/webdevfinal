@@ -6,7 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import InfoIcon from '@material-ui/icons/Info';
 import MaterialTable from 'material-table';
-
+import axios from 'axios'
 
 
 
@@ -48,7 +48,19 @@ export default class DateLocation extends Component {
                     }
                 },
             ],
+            readyToLoad: false
         }
+    }
+
+    componentDidMount = () => {
+        axios.get("http://localhost:4000/admin/bus")
+            .then(res => {
+                for (let index = 0; index < res.data.data.body.length; index++) {
+                    this.state.data.push(res.data.data.body[index])
+                }
+                this.setState({readyToLoad: true})
+            });
+        console.log(this.state.data)
     }
 
     checkCredential = () => {
@@ -60,6 +72,7 @@ export default class DateLocation extends Component {
                 {this.view()}
             </div>
         )
+       
     }
 
     view() {
@@ -83,70 +96,72 @@ export default class DateLocation extends Component {
             // },
         }));
 
-        return (
-            <div style={{ backgroundColor: '#f5f5f5' }} className={classes.root}>
-                <Grid container spacing={3} justify="center" style={{ marginTop: '3%' }}>
-                    <Grid item xs={11} >
-                        <Paper className={classes.paper} >
-                            <Grid container justify='space-around' style={{ height: '10%', marginTop: '1%' }}>
-                                <Grid style={{ width: '100%' }}>
-                                    <Card style={{ maxHeight: '300px' }}>
-                                        <CardContent style={{ backgroundColor: '#ffc107' }}>
-                                            <p style={{ textAlign: 'justify' }}><InfoIcon /><b>Buses List<br ></br></b>
-                                            </p>
-                                        </CardContent>
-                                    </Card>
+        if(this.state.readyToLoad) {
+            return (
+                <div style={{ backgroundColor: '#f5f5f5' }} className={classes.root}>
+                    <Grid container spacing={3} justify="center" style={{ marginTop: '3%' }}>
+                        <Grid item xs={11} >
+                            <Paper className={classes.paper} >
+                                <Grid container justify='space-around' style={{ height: '10%', marginTop: '1%' }}>
+                                    <Grid style={{ width: '100%' }}>
+                                        <Card style={{ maxHeight: '300px' }}>
+                                            <CardContent style={{ backgroundColor: '#ffc107' }}>
+                                                <p style={{ textAlign: 'justify' }}><InfoIcon /><b>Buses List<br ></br></b>
+                                                </p>
+                                            </CardContent>
+                                        </Card>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                            <Grid>
-                                <MaterialTable
-                                title = ''
-                                    columns={this.state.columns}
-                                    data={this.state.data}
-                                    editable={{
-                                        onRowAdd: newData =>
-                                            new Promise(resolve => {
-                                                setTimeout(() => {
-                                                    resolve();
-                                                    this.setState(prevState => {
-                                                        const data = [...prevState.data];
-                                                        data.push(newData);
-                                                        return { ...prevState, data };
-                                                    });
-                                                }, 600);
-                                            }),
-                                        onRowUpdate: (newData, oldData) =>
-                                            new Promise(resolve => {
-                                                setTimeout(() => {
-                                                    resolve();
-                                                    if (oldData) {
+                                <Grid>
+                                    <MaterialTable
+                                        title=''
+                                        columns={this.state.columns}
+                                        data={this.state.data}
+                                        editable={{
+                                            onRowAdd: newData =>
+                                                new Promise(resolve => {
+                                                    setTimeout(() => {
+                                                        resolve();
                                                         this.setState(prevState => {
                                                             const data = [...prevState.data];
-                                                            data[data.indexOf(oldData)] = newData;
+                                                            data.push(newData);
                                                             return { ...prevState, data };
                                                         });
-                                                    }
-                                                }, 600);
-                                            }),
-                                        onRowDelete: oldData =>
-                                            new Promise(resolve => {
-                                                setTimeout(() => {
-                                                    resolve();
-                                                    this.setState(prevState => {
-                                                        const data = [...prevState.data];
-                                                        data.splice(data.indexOf(oldData), 1);
-                                                        return { ...prevState, data };
-                                                    });
-                                                }, 600);
-                                            }),
-                                    }}
-                                />
-                            </Grid>
-                        </Paper>
+                                                    }, 600);
+                                                }),
+                                            onRowUpdate: (newData, oldData) =>
+                                                new Promise(resolve => {
+                                                    setTimeout(() => {
+                                                        resolve();
+                                                        if (oldData) {
+                                                            this.setState(prevState => {
+                                                                const data = [...prevState.data];
+                                                                data[data.indexOf(oldData)] = newData;
+                                                                return { ...prevState, data };
+                                                            });
+                                                        }
+                                                    }, 600);
+                                                }),
+                                            onRowDelete: oldData =>
+                                                new Promise(resolve => {
+                                                    setTimeout(() => {
+                                                        resolve();
+                                                        this.setState(prevState => {
+                                                            const data = [...prevState.data];
+                                                            data.splice(data.indexOf(oldData), 1);
+                                                            return { ...prevState, data };
+                                                        });
+                                                    }, 600);
+                                                }),
+                                        }}
+                                    />
+                                </Grid>
+                            </Paper>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </div >
-        )
+                </div >
+            )
+        }
     }
 
 }
